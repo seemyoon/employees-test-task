@@ -1,0 +1,70 @@
+body {
+    font-family: sans-serif;
+    padding: 20px;
+    background: #fff;
+    color: #000;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+input, select, button {
+    padding: 5px;
+    margin: 5px;
+    font-size: 14px;
+}
+
+button {
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+form {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+form input {
+    flex: 1;
+    min-width: 100px;
+}
+
+#pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#pagination-controls button {
+    margin: 0 10px;
+    padding: 5px 15px;
+}
+
+#pagination-controls span {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 10px;
+}
