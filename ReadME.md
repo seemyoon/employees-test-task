@@ -30,6 +30,12 @@ frontend: HTML, CSS, Vanilla JavaScript
    ```bash
    createdb employees
 
-5. start the app:
+5. frontend-part:
+   ```bash
+   cd client
+   yarn
+   yarn build
+
+6. start the app:
    ```bash
    yarn start
