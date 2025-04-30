@@ -1,17 +1,22 @@
-import { Sequelize, DataTypes } from 'sequelize';
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
+import {DataTypes, Sequelize} from "sequelize";
 
 dotenv.config()
 
-const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
-    host: process.env.DB_HOST,
-    dialect: 'postgres',
-});
+const sequelize = new Sequelize(
+    process.env.DB_NAME,
+    process.env.DB_USERNAME,
+    process.env.DB_PASSWORD,
+    {
+        host: process.env.DB_HOST,
+        dialect: "postgres"
+    }
+)
 
 const Employee = sequelize.define('Employee', {
     name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
     },
     surname: {
         type: DataTypes.STRING,
@@ -27,24 +32,24 @@ const Employee = sequelize.define('Employee', {
     },
     hireDate: {
         type: DataTypes.DATE,
-        allowNull: false,
+        allowNull: false
     },
     hours: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: false
     },
     rate: {
         type: DataTypes.FLOAT,
-        allowNull: false,
+        allowNull: false
     },
     salary: {
         type: DataTypes.FLOAT,
-        allowNull: false,
-    },
-});
+        allowNull: false
+    }
+})
 
 sequelize.sync()
-    .then(() => console.log('Database synced'))
-    .catch(err => console.error('Error syncing database', err));
+    .then(() => console.log('db synced'))
+    .catch(err => console.error('error syncing db', err))
 
-export { sequelize, Employee };
+export {sequelize, Employee}

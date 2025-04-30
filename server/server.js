@@ -1,10 +1,9 @@
 import dotenv from "dotenv";
 import express from "express";
-import routes from "./routes.js";
-import {fileURLToPath} from 'url'
 import * as path from "node:path";
-import { sequelize } from "./data-source.js";
-
+import {fileURLToPath} from "url";
+import {sequelize} from "./data-source.js";
+import routes from "./routes.js";
 
 dotenv.config()
 
@@ -14,10 +13,11 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-app.use(express.static(path.join(__dirname, '../client')))
-app.use('/api/employees', routes)
+app.use('/api/employees', routes);
 
-const PORT = process.env.PORT || 3000
+app.use(express.static(path.join(__dirname, '../client/build')));
+
+const PORT = process.env.PORT
 
 const connection = async () => {
     let connected = false;
@@ -25,8 +25,8 @@ const connection = async () => {
     while (!connected) {
         try {
             console.log('connecting to db...')
-            await sequelize.authenticate();
-            await sequelize.sync();
+            await sequelize.authenticate()
+            await sequelize.sync()
             connected = true
             console.log('db was connected')
 
@@ -35,9 +35,8 @@ const connection = async () => {
             })
         } catch (e) {
             console.error('db unavailable. retrying in 3 seconds...')
-            await new Promise((resolve) => setTimeout(resolve, 3000))
+            await new Promise(resolve => setTimeout(resolve, 3000))
         }
-
     }
 }
 
